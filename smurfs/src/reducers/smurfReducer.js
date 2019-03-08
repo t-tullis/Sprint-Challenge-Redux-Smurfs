@@ -5,6 +5,9 @@ import {
     FETCHING_DATA,
     FETCH_DATA_SUCCESS,
     FETCH_DATA_FAILURE,
+    ADDING_SMURF,
+    ADD_SMURF_SUCCESS,
+    ADD_SMURF_ERROR
 }
  from '../actions';
 
@@ -37,6 +40,24 @@ const initialState = {
           isLoading: false,
           error: action.payload
         };
+        case ADDING_SMURF:
+        return{
+          ...state,
+          addingSmurf: true,
+          error: null
+        };
+        case ADD_SMURF_SUCCESS:
+        return{
+          ...state,
+          smurfs: action.payload,
+          addingSmurf: false
+        }
+        case ADD_SMURF_ERROR:
+        return{
+          ...state,
+          addingSmurf: false,
+          error: action.payload
+        }
         default:
         return state;
     }
